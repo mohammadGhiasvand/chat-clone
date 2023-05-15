@@ -67,7 +67,7 @@ export default function SetAvatar() {
       const data = [];
       for (let i = 0; i < 4; i++) {
         const img = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}?apikey=MFCat7suX2HoQj` //! 1:51:07 sudo service mongod start
+          `${api}/${Math.round(Math.random() * 1000)}?apikey=MFCat7suX2HoQj`
         );
         const buffer = new Buffer(img.data);
         data.push(buffer.toString('base64'));

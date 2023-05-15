@@ -9,6 +9,7 @@ import { Buffer } from 'buffer';
 // Custom Componenets
 import { allUsersRoute } from '../utils/APIRoutes';
 import Contacts from '../components/Contacts';
+import Welcome from '../components/Welcome';
 
 // Import Images
 import loader from '../assets/loader.gif';
@@ -18,40 +19,48 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Chat() {
   const navigate = useNavigate();
-
   const [contacts, setContacts] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentChat, setCurrentChat] = useState(undefined);
 
   useEffect(() => {
-    if (!localStorage.getItem('chat-app-user')) {
-      navigate('/login');
-    } else {
-      const user = JSON.parse(localStorage.getItem('chat-app-user'));
-      setCurrentUser(user); //! 2:09:25
-    }
+    (async () => {
+      if (!localStorage.getItem('chat-app-user')) {
+        navigate('/login');
+      } else {
+        setCurrentUser(await JSON.parse(localStorage.getItem('chat-app-user'))); //! 2:09:25
+      }
+    })();
   }, []);
 
   useEffect(() => {
-    if (currentUser && currentUser.isAvatarImageSet) {
-      axios
-        .get(`${allUsersRoute}/${currentUser._id}`)
-        .then(({ data }) => {
-          setContacts(data);
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      navigate('/setAvatar');
-    }
+    (async () => {
+      if (currentUser) {
+        if (currentUser.isAvatarImageSet) {
+          const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+          setContacts(data.data);
+        } else {
+          navigate('/setAvatar');
+        }
+      }
+    })();
   }, [currentUser]);
+
+  const handleChatChange = (chat) => {
+    setCurrentChat(chat);
+  };
 
   return (
     <>
+      {currentChat}
       <Container>
         <div className="container">
-          <Contacts contacts={contacts} currentUser={currentUser} />
+          <Contacts
+            contacts={contacts}
+            currentUser={currentUser}
+            changeChat={() => handleChatChange()}
+          />
+          <Welcome currentUser={currentUser} />
         </div>
       </Container>
     </>
