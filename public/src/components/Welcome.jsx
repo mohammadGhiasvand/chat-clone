@@ -10,7 +10,7 @@ export default function Welcome({ currentUser }) {
         <h1>
           Welcome <span>{currentUser ? currentUser.username : ''}!</span>{' '}
         </h1>
-        <h3>Please select a chat to start messaging.</h3> //! 2:37:34
+        <h3>Please select a chat to start messaging.</h3> {/* //! 2:37:34 */}
       </Container>
     </>
   );
