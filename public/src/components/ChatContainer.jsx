@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import styled from 'styled-components';
-import Logout from './Logout';
 import ChatInput from './ChatInput';
 import Messages from './Messages';
 import { v4 as uuidv4 } from 'uuid';
@@ -77,7 +76,6 @@ export default function ChatContainer({ currentUser, currentChat, socket }) {
                 <h3>{currentChat.username}</h3>
               </div>
             </div>
-            <Logout />
           </div>
           {/* <Messages /> */}
           <div className="chat-messages" ref={scrollRef}>

@@ -81,11 +81,12 @@ export default function SetAvatar() {
     <>
       {isLoading ? (
         <Container>
-          <img src={loader} alt="loader" className="loader" />
+          {/* <img src={loader} alt="loader" className="loader" /> */}
+          <div className="spinner"></div>
         </Container>
       ) : (
         <Container>
-          <div className="titleContainer">
+          <div className="title-container">
             <h1>Pick an avatar as your profile picture</h1>
           </div>
           <div className="avatars">
@@ -124,8 +125,19 @@ const Container = styled.div`
   background-color: #131324;
   height: 100vh;
   width: 100vw;
-  .loader {
-    max-inline-size: 100%;
+  .spinner {
+    width: 4em;
+    height: 4em;
+    border: 0.5em solid rgba(255, 255, 255, 0.1);
+    border-left-color: #7983ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   .title-container {

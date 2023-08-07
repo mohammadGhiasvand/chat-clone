@@ -66,6 +66,10 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 5% 95%;
   background-color: #080420;
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    /* padding: 1.4rem 1rem; */
+    gap: 1rem;
+  }
   .button-container {
     display: flex;
     align-items: center;
@@ -116,17 +120,15 @@ const Container = styled.div`
   .input-container {
     width: 100%;
     border-radius: 2rem;
-    background-color: transparent;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    background-color: #ffffff34;
     input {
       width: 90%;
-      padding: 0.7rem 0.5rem;
-      background-color: transparent;
+      padding: 1rem;
+      border-radius: 0.375rem;
       color: #fff;
+      background-color: #ffffff34;
       border: none;
       font-size: 1.2rem;
       &::selection {
@@ -137,14 +139,19 @@ const Container = styled.div`
       }
     }
     button {
-      height: 100%;
-      padding: 0 2rem;
-      border-radius: 2rem;
+      padding: 0.3rem 1rem;
+      border-radius: 0.375rem;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #9a86f3;
       border: none;
+      cursor: pointer;
+      @media screen and (min-width: 720px) and (max-width: 1080px) {
+        svg {
+          font-size: 1rem;
+        }
+      }
       svg {
         font-size: 2rem;
         color: #fff;

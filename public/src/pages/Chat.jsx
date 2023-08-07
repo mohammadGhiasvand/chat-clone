@@ -18,6 +18,7 @@ import loader from '../assets/loader.gif';
 // Import Css files
 import 'react-toastify/dist/ReactToastify.css';
 import ChatContainer from '../components/ChatContainer';
+import Logout from '../components/Logout';
 
 function Chat() {
   const navigate = useNavigate();
@@ -82,6 +83,9 @@ function Chat() {
           ) : (
             <Welcome currentUser={currentUser} />
           )}
+          <div className="logout-container">
+            <Logout />
+          </div>
         </div>
       </Container>
     </>
@@ -98,13 +102,19 @@ const Container = styled.div`
   align-items: center;
   background-color: #131324;
   .container {
-    height: 85vh;
-    width: 85vw;
+    height: 95vh;
+    width: 95vw;
+    position: relative;
     background-color: #00000076;
     display: grid;
     grid-template-columns: 25% 75%;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
+    }
+    .logout-container {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
     }
   }
 `;

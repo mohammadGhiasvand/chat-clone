@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { registerRoute } from '../utils/APIRoutes';
 
 // Import Images
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/logo.png';
 
 // Import Css files
 import 'react-toastify/dist/ReactToastify.css';

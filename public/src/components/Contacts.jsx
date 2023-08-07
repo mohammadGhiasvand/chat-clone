@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Import Images
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/logo.png';
 
 export default function Contacts({ contacts, currentUser, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -44,7 +44,11 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                     />
                   </div>
                   <div className="username">
-                    <h3>{contact.username}</h3>
+                    <h3>
+                      {contact.username.length > 10
+                        ? `${contact.username.slice(0, 13)}...`
+                        : contact.username}
+                    </h3>
                   </div>
                 </div>
               );
